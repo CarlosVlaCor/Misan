@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Página web de blog de café">
+    <title>Misan</title>
+   
+    <!--prefetch: sirve para precargar páginas-->
+    <link rel="prefetch" href="nosotros.html" as="document">
+
+   <!--Preload: sirve para precargar elementos que consideremos esenciales-->
+    <link rel="preload" href="../static/css/normalize.css" as="style">
+    <link rel="stylesheet" href="../static/css/normalize.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&family=PT+Sans:wght@400;700&display=swap" 
+    crossorigin="crossorigin" as="font">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&family=PT+Sans:wght@400;700&display=swap" rel="stylesheet">
+
+    <link rel="preload" href="../static/css/styles.css" as="style">
+    <link rel="stylesheet" href="../static/css/styles.css">
+    <script src="https://kit.fontawesome.com/498b4e748b.js" crossorigin="anonymous"></script>
+    
+</head>
+<body>
+    <header class="header">
+
+        <div class="contenedor">
+            <div class="barra">
+                <a class="logo" href="index.html">
+                 <img src="img/Logo.PNG" alt="" height="70px">
+                </a>
+
+                <nav class="navegacion">
+                  
+                        <a class="navegacion__enlace" href="nosotros.html">Nosotros</a>
+                       
+                        <a class="navegacion__enlace" href="registro.html">Registro</a>
+                     <ul>
+                        <li><label class="navegacion__enlace" >¿Dudas?</label>
+                            <ul>
+                                <li><a href="requisitos.html">Requisitos</a></li>
+                                <li><a href="mitos.html">Mitos</a></li>
+                                <li><a href="pf.html">Preguntas frecuentes</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                     
+                </nav>
+            </div>  
+        </div>
+   </header>
+   <div class="bg-img">
+       <div class="overlay">
+            <div class="header__texto">
+                <h2 class="no-margin h2-espacio">#Donación de sangre</h2>
+                <p class="no-margin">Donar tu sangre puede ayudar salvar vidas</p>
+            </div>
+        </div>
+   </div>
+
+       <main class="contenedor">
+           
+           
+
+           <h3>Lista de solicitudes</h3> 
+
+           <div class="contenedor-receptores">
+            
+            <table class="tabla-solicitudes">
+                <tbody>
+                <tr>
+                  <th>Nombre</th>
+                  <th>Ciudad</th>
+                  <th>Tipos de sangre</th>
+                  <th>Estatus de solicitud</th>
+                  <th></th>
+                </tr>
+                
+                <tr>
+                  <td>Juan Pérez</td>
+                  <td>Los Mochis</td>
+                  <td>  O+</td>
+                  <td> Recibida</td>
+                  <td> <input class="boton boton--primario" type="button" value="Aceptar solicitud" id="abrir-popup">  </td>
+                </tr>
+                       
+                <tr>
+                  <td>Ricardo Milos</td>
+                  <td>Culiacán</td>
+                  <td>AB+</td>
+                  <td>Enviada</td>
+                  <td> <input class="boton boton--primario" type="button" value="Aceptar solicitud" >  </td>
+                </tr>
+                
+                <tr>
+                  <td>María del Jesús Gutierrez Perez</td>
+                  <td>Mazatlán</td>
+                  <td>O-</td>
+                  <td>Recibida</td>
+                  <td> <input class="boton boton--primario" type="button" value="Aceptar solicitud" >  </td>
+                </tr>
+            </tbody>
+            </table>
+                
+               
+           </div>
+       </main>
+ 
+    <footer class="footer">
+        <div class="contenedor">
+            <div class="barra-inferior">
+                
+                    <a class="logo" href="index.html">
+                    <img src="img/Logo.PNG" alt="" height="70px">
+                    </a>
+
+                    <p>Misan 2022. Todos los derechos reservados.</p>
+                
+            </div>
+        </div>
+    </footer>
+    <div class="overlay--solicitudes" id="overlay--solicitudes">
+        <div class="pop-up" id="popup">
+            <div class="cerrar--popup"><i class="fa-solid fa-circle-xmark" id="cerrar--popup"></i></div>
+            <h3>Atención</h3>
+            <p>
+                Al darle a aceptar, lo que estás haciendo es aceptar el envio de datos como lo son celular y correo electrónico que proporcionaste a la hora<br/> de registrarte a Misan.
+                Esto con el fin de tener una manera de contactarse con el usuario Juan Perez.
+               Si tiene dudas, puede revisar el perfil del usuario para más información.
+            </p>
+            <div class="otras-opciones">
+            <p>¿Desea proporcionar otro número o teléfono?</p>
+            <div><input type="checkbox"id="otro-correo" > Introducir otro correo electrónico</div>
+            <div class="cont-correo" id="cont-correo"><input type="text" class="campo__field otro-correo"placeholder="Otro correo" ></div>
+            <div><input type="checkbox" id="otro-telefono"> Introducir otro teléfono de celular</div>
+            <div class="cont-telefono" id="cont-telefono"><input type="text" class="campo__field " placeholder="Otro teléfono" ></div>
+            </div>
+            
+            <input type="submit"class="boton boton--primario" id="cancelar-envio"value="Cancelar">
+            <input type="submit"class="boton boton--primario" value="Aceptar">
+        </div>
+        
+    </div>
+
+    <script src="js/modernizr.js"></script>
+    <script src="js/funciones.js"></script>
+   
+</body >
+</html>

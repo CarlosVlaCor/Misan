@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Misan</title>
+	<link rel="stylesheet" href="css/normalize.css">
+	<link href="https://fonts.googleapis.com/css2?family=Open+Sans&family=PT+Sans:wght@400;700&display=swap"
+		rel="stylesheet">
+	<link rel="stylesheet" href="css/styles.css">
+	<link rel="shortcut icon" href="">
+
+</head>
+
+<body>
+	<header class="header">
+
+		<div class="contenedor">
+			<div class="barra">
+				<a class="logo" href="index.html">
+					<img src="img/Logo.PNG" alt="" height="70px">
+				</a>
+
+				<nav class="navegacion">
+					<a class="navegacion__enlace" href="nosotros.html">Nosotros</a>
+
+					<a class="navegacion__enlace" href="registro.html">Registro</a>
+					<ul>
+						<li><label class="navegacion__enlace">¿Dudas?</label>
+							<ul>
+								<li><a href="requisitos.html">Requisitos</a></li>
+								<li><a href="mitos.html">Mitos</a></li>
+								<li><a href="pf.html">Preguntas frecuentes</a></li>
+							</ul>
+						</li>
+					</ul>
+				</nav>
+			</div>
+		</div>
+	</header>
+	<div class="bg-img">
+		<div class="overlay">
+			<div class="header__texto">
+				<h2 class="no-margin h2-espacio">#Donación de sangre</h2>
+				<p class="no-margin">Donar tu sangre puede ayudar salvar vidas</p>
+			</div>
+		</div>
+	</div>
+
+	<main class="contenedor">
+		<h3 class="centrar-texto">Registro</h3>
+		<div class="contacto-bg"></div>
+
+		<form class="formulario">
+
+			<div class="campo">
+				<label class="campo__label" for="Nombre">Nombre</label>
+				<input class="campo__field" type="text" placeholder="Tu Nombre" id="nombre">
+			</div>
+
+			<div class="campo">
+				<label class="campo__label" for="ApellidoPaterno">Apellido Paterno</label>
+				<input class="campo__field" type="text" placeholder="Tu apellido" id="apellidoPaterno">
+			</div>
+
+			<div class="campo">
+				<label class="campo__label" for="ApellidoMaterno">Apellido Materno</label>
+				<input class="campo__field" type="text" placeholder="Tu apellido" id="apellidoMaterno">
+			</div>
+
+			<div class="campo">
+				<label class="campo__label" for="tipoSangre">Tipo de sangre</label>
+				<select class="campo__field" name="tipoSangre" id="tipoSangre">
+					<option disabled selected>Seleccione tipo de sangre</option>
+					<option value="1"> A+</option>
+					<option value="2"> A-</option>
+					<option value="3"> AB+</option>
+					<option value="4"> AB-</option>
+					<option value="5"> B+</option>
+					<option value="6"> B-+</option>
+					<option value="7"> O+</option>
+					<option value="8"> O-</option>
+				</select>
+			</div>
+
+			<div class="campo">
+				<label class="campo__label" for="fechaNacimiento">Fecha de nacimiento</label>
+				<input class="campo__field" type="date" name="nacimiento" id="fechaNacimiento">
+			</div>
+
+			<div class="campo">
+				<label class="campo__label" for="ciudad">Ciudad</label>
+				<input class="campo__field" type="text" placeholder="Tu ciudad" id="ciudad">
+			</div>
+
+			<div class="campo">
+				<label class="campo__label" for="estado">Estado</label>
+				<select class="campo__field" name="estado" id="estados">
+					<option disabled selected>Seleccione un estado</option>
+					<option value="1">Aguascalientes</option>
+					<option value="2">Baja California</option>
+					<option value="3">Baja California Sur</option>
+					<option value="4">Campeche</option>
+					<option value="5">Chiapas</option>
+					<option value="6">Chihuahua</option>
+					<option value="7">Ciudad de México</option>
+					<option value="8">Coahuila</option>
+					<option value="9">Colima</option>
+					<option value="10">Durango</option>
+					<option value="11">Estado de México</option>
+					<option value="12">Guanajuato</option>
+					<option value="13">Guerrero</option>
+					<option value="14">Hidalgo</option>
+					<option value="15">Jalisco</option>
+					<option value="16">Michoacán</option>
+					<option value="17">Morelos</option>
+					<option value="18">Nayarit</option>
+					<option value="19">Nuevo León</option>
+					<option value="20">Oaxaca</option>
+					<option value="21">Puebla</option>
+					<option value="22">Querétaro</option>
+					<option value="23">Quintana Roo</option>
+					<option value="24">San Luis Potosí</option>
+					<option value="25">Sinaloa</option>
+					<option value="26">Sonora</option>
+					<option value="27">Tabasco</option>
+					<option value="28">Tamaulipas</option>
+					<option value="29">Tlaxcala</option>
+					<option value="30">Veracruz</option>
+					<option value="31">Yucatán</option>
+					<option value="32">Zacatecas</option>
+				</select>
+			</div>
+
+			<div class="campo">
+				<label class="campo__label" for="pais">País</label>
+				<select class="campo__field" name="pais" id="paises">
+					<option value="1">México</option>
+					
+				</select>
+			</div>
+
+			<div class="campo">
+				<label class="campo__label" for="Email">Email</label>
+				<input class="campo__field" type="email" placeholder="Tu Email" id="email">
+			</div>
+
+			<div class="campo">
+				<label class="campo__label" for="telefono">Teléfono</label>
+				<input class="campo__field" type="tel" placeholder="Tu Teléfono" id="telefono">
+			</div>
+
+			<div class="campo">
+				<label class="campo__label" for="contraseña">Contraseña</label>
+				<input class="campo__field" type="password" placeholder="introduce una contraseña" id="contrasena">
+			</div>
+
+			<div class="campo">
+				<input type="button" value="Registrarse" class="boton boton--primario" onclick="funcionRegistro()">
+			</div>
+		</form>
+	</main>
+	<footer class="footer">
+		<div class="contenedor">
+			<div class="barra-inferior">
+
+				<a class="logo" href="index.html">
+					<img src="img/Logo.PNG" alt="" height="70px">
+				</a>
+
+				<p>Misan 2022. Todos los derechos reservados.</p>
+
+			</div>
+		</div>
+	</footer>
+	<script src="js/funcionesInicio.js"></script>
+	<script src="js/modernizr.js"></script>
+</body>
+
+</html>

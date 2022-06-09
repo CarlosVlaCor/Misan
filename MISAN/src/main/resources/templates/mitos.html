@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Página web de blog de café">
+    <title>Misan</title>
+   
+    <!--prefetch: sirve para precargar páginas-->
+    <link rel="prefetch" href="nosotros.html" as="document">
+
+   <!--Preload: sirve para precargar elementos que consideremos esenciales-->
+    <link rel="preload" href="../static/css/normalize.css" as="style">
+    <link rel="stylesheet" href="../static/css/normalize.css">
+
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Open+Sans&family=PT+Sans:wght@400;700&display=swap" 
+    crossorigin="crossorigin" as="font">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&family=PT+Sans:wght@400;700&display=swap" rel="stylesheet">
+
+    <link rel="preload" href="../static/css/styles.css" as="style">
+    <link rel="stylesheet" href="../static/css/styles.css">
+ 
+</head>
+<body>
+    <header class="header">
+
+        <div class="contenedor">
+            <div class="barra">
+                <a class="logo" href="/">
+                 <img src="img/Logo.PNG" alt="" height="70px">
+                </a>
+
+                <nav class="navegacion">
+                  
+                        <a class="navegacion__enlace" href="nosotros">Nosotros</a>
+                       
+                        <a class="navegacion__enlace" href="registro">Registro</a>
+                     <ul>
+                        <li><label class="navegacion__enlace" >¿Dudas?</label>
+                            <ul>
+                                <li><a href="requisitos">Requisitos</a></li>
+                                <li><a href="mitos">Mitos</a></li>
+                                <li><a href="pf">Preguntas frecuentes</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+   </header>
+   <div class="bg-img">
+       <div class="overlay">
+            <div class="header__texto">
+                <h2 class="no-margin h2-espacio">#Donación de sangre</h2>
+                <p class="no-margin">Donar tu sangre puede ayudar salvar vidas</p>
+            </div>
+        </div>
+   </div>
+        <section class="animate">
+            <div class="contenedor">
+                <div class="animate-contenido">
+                    <h2 class="no-margin">¡Anímate!</h2>
+                    <a href="#">Ser donador</a> <br>
+                    <a href="#">Solicitar donación</a> <br> 
+                </div> 
+            </div>
+        </section>
+
+        <section class="ambos"> 
+
+            <div class="contenedor">
+                
+               <div class="ambos-contenido"> 
+                    <div class="proceso"> 
+                        <h3>Mitos sobre la donación de sangre</h3>
+
+                            <UL>
+                                <LI>
+                                    Los diabéticos o quienes padecen enfermedades del corazón no pueden donar.sí puede, en tanto los niveles estén controlados y no consuman medicamentos o insulina.
+                                </LI>
+                                <li>
+                                    Personas con tatuajes o perforaciones no pueden donar. sí pueden, después de un año de realizárselo.
+                                </li>
+                                <li>
+                                    Para donar sangre hay que ayunar.solo se recomienda no haber ingerido alimentos en las últimas dos horas previas a la donación.
+                                </li>
+                                <li>
+                                    Es doloroso. el umbral del dolor varía en cada persona. El material con el que se realiza la extracción está hecho para causar el menor daño posible.
+                                </li>
+                                <li>
+                                    Donar sangre engorda o adelgaza.falso. Cuando se dona se dan entre 400 y 450 ml., cantidad que no provoca ningún tipo de cambio.
+                                 </li>
+                                <li>
+                                    Después de una intervención quirúrgica no se puede donar.ciertamente no se puede donar inmediatamente, hay que esperar seis meses para hacerlo.
+                                </li>
+                                <li>
+                                    Quienes tuvieron hepatitis no pueden donar.aquellos que sufrieron hepatitis A antes de los 10 años de edad pueden hacerlo, pero quienes sufrieron la B o C, definitivamente no pueden.
+                                </li>
+                            </UL>
+                        </div>
+                        <p>Fuente de información: <a target="_blank" href="https://centromedicoabc.com/revista-digital/mitos-y-realidades-de-la-donacion-de-sangre/">https://centromedicoabc.com/revista-digital/mitos-y-realidades-de-la-donacion-de-sangre/</a></p>
+                </div> 
+            </div>
+        </section>
+             
+        </div>
+ 
+    <footer class="footer">
+        <div class="contenedor">
+            <div class="barra-inferior">
+                
+                    <a class="logo" href="index.html">
+                    <img src="img/Logo.PNG" alt="" height="70px">
+                    </a>
+
+                    <p>Misan 2022. Todos los derechos reservados.</p>
+                
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/modernizr.js"></script>
+</body>
+</html>

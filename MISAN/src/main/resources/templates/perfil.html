@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Página web de blog de café">
+    <title>Misan</title>
+   
+    <!--prefetch: sirve para precargar páginas-->
+    <link rel="prefetch" href="nosotros.html" as="document">
+
+   <!--Preload: sirve para precargar elementos que consideremos esenciales-->
+    <link rel="preload" href="../static/css/normalize.css" as="style">
+    <link rel="stylesheet" href="../static/css/normalize.css">
+
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Open+Sans&family=PT+Sans:wght@400;700&display=swap" 
+    crossorigin="crossorigin" as="font">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&family=PT+Sans:wght@400;700&display=swap" rel="stylesheet">
+
+    <link rel="preload" href="../static/css/styles.css" as="style">
+    <link rel="stylesheet" href="../static/css/styles.css">
+
+    <script src="https://kit.fontawesome.com/498b4e748b.js" crossorigin="anonymous"></script>
+ 
+</head>
+<body>
+    <header class="header">
+
+        <div class="contenedor">
+            <div class="barra">
+                <a class="logo" href="index.html">
+                 <img src="img/Logo.PNG" alt="" height="70px">
+                </a>
+
+                <nav class="navegacion">
+                  
+                        <a class="navegacion__enlace" href="nosotros.html">Nosotros</a>
+                       
+                        <a class="navegacion__enlace" href="registro.html">Registro</a>
+                     <ul>
+                        <li><label class="navegacion__enlace" >¿Dudas?</label>
+                            <ul>
+                                <li><a href="requisitos.html">Requisitos</a></li>
+                                <li><a href="mitos.html">Mitos</a></li>
+                                <li><a href="pf.html">Preguntas frecuentes</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                     
+                </nav>
+            </div>  
+        </div>
+   </header>
+   <div class="bg-img">
+       <div class="overlay">
+            <div class="header__texto">
+                <h2 class="no-margin h2-espacio">#Donación de sangre</h2>
+                <p class="no-margin">Donar tu sangre puede ayudar salvar vidas</p>
+            </div>
+        </div>
+   </div>
+
+       <main class="contenedor">
+
+             
+         
+            <div class="perfil">
+                <div class="perfil-izq">
+                    <i class="fa-solid fa-circle-user perfil-logo"></i>
+                    <p>Juan Pérez Guzmán</p>
+                    
+                    
+
+                </div>
+
+                <div class="perfil-drch"> 
+                    <h3>Calificación promedio dada por usuarios</h3>
+                    <div class="calificacion">
+                       
+                        
+                            <p>5/5</p>
+                        
+                        
+                            <i class="fa-solid fa-heart corazon-logo"></i>
+                        
+                      
+            
+                    </div>
+                </div>
+                <div class="perfil-inf">
+                    <div class="perfil-inf__cont">
+                        <div>
+                            TIPO DE SANGRE
+                        </div>
+                        <div>
+                            o+
+                        </div>
+                    </div>
+                    <div class="perfil-inf__cont">
+                        <div>
+                            FECHA DE NACIMIENTO
+                        </div>
+                        <div>
+                            25 de Enero del 1995
+                        </div>
+                    </div>
+                    <div class="perfil-inf__cont">
+                        <div>
+                            CIUDAD
+                        </div>
+                        <div>
+                            Los Mochis
+                        </div>
+                    </div>
+                    <div class="perfil-inf__cont">
+                        <div>
+                            ESTADO
+                        </div>
+                        <div>
+                            Sinaloa
+                        </div>
+                    </div>
+                    <div class="perfil-inf__cont">
+                        <div>
+                            PAÍS
+                        </div>
+                        <div>
+                            México
+                        </div>
+                    </div>
+                    <div class="perfil-inf__cont">
+                        <div>
+                            TELÉFONO
+                        </div>
+                        <div>
+                            6684323223
+                        </div>
+                    </div>
+                    <div class="perfil-inf__cont">
+                        <div>
+                            EMAIL
+                        </div>
+                        <div>
+                            juanperez@gmail.com
+                        </div>
+                    </div>
+                    <input type="submit" value="Cambiar datos" class="boton boton--primario boton-cambiar">
+                    
+                </div>
+                
+            </div>
+       </main>
+      <footer class="footer">
+        <div class="contenedor">
+            <div class="barra-inferior">
+                
+                    <a class="logo" href="index.html">
+                    <img src="img/Logo.PNG" alt="" height="70px">
+                    </a>
+
+                    <p>Misan 2022. Todos los derechos reservados.</p>
+                
+            </div>
+        </div>
+    </footer>
+    
+    <script src="js/modernizr.js"></script>
+</body>
+</html>
