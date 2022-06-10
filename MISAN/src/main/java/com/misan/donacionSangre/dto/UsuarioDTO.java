@@ -95,4 +95,12 @@ public class UsuarioDTO {
 	public UsuarioDTO() {
 		super();
 	}
+	@Override
+	public String toString() {
+		return "UsuarioDTO [id=" + id + ", nombre=" + nombre + ", apellidoPaterno=" + apellidoPaterno
+				+ ", apellidoMaterno=" + apellidoMaterno + ", fechaNacimiento=" + fechaNacimiento + ", email=" + email
+				+ ", password=" + password + ", tipoSangre=" + tipoSangre + ", domicilio=" + domicilio + ", roles="
+				+ roles + "]";
+	}
+	
 }

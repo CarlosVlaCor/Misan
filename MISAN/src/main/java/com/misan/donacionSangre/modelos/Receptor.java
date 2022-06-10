@@ -3,6 +3,7 @@ package com.misan.donacionSangre.modelos;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -22,7 +23,7 @@ public class Receptor {
 	private String ubicacion;
 	 private boolean activo;
 	private Date fecha;
-	@OneToOne
+	@OneToOne(cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
 	@JoinColumn(name = "id_usuario")
 	private Usuario usuario;
 	

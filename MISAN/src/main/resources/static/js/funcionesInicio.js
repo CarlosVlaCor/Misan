@@ -7,18 +7,18 @@ async function funcionRegistro(){
 	datos.fechaNacimiento = document.getElementById('fechaNacimiento').value;
 
 	datos.tipoSangre = {};
-	datos.tipoSangre.idTipoSangre = document.getElementById('tipoSangre').value;
+	datos.tipoSangre.id = document.getElementById('tipoSangre').value;
 	
 	datos.domicilio = {};
 	datos.domicilio.ciudad = document.getElementById('ciudad').value;
 	datos.domicilio.estado = {}//
-	datos.domicilio.estado.idEstado = document.getElementById('estados').value;
+	datos.domicilio.estado.id = document.getElementById('estados').value;
 	datos.domicilio.pais = {}//
-	datos.domicilio.pais.idPais = document.getElementById('paises').value;
+	datos.domicilio.pais.id = document.getElementById('paises').value;
 	console.log('c')
-	datos.correo = document.getElementById('email').value;
+	datos.email = document.getElementById('email').value;
 	datos.telefono = document.getElementById('telefono').value;
-	datos.contrasena = document.getElementById('contrasena').value;
+	datos.password = document.getElementById('contrasena').value;
 	console.log('d')
 	
 	const response = await fetch('api/registro', {
@@ -30,7 +30,7 @@ async function funcionRegistro(){
     body: JSON.stringify(datos)
   });
   console.log('e')
-  const content = await response.json();
+  const content = await response.text();
 
   	
    	if(response.ok){
