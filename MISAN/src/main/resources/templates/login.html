@@ -49,20 +49,20 @@
          <h3 class="centrar-texto">Login</h3>
          <div class="contacto-bg"></div>        
          
-         <form class="formulario">
+         <form class="formulario" method="POST">
    
              <div class="campo">
                 <label class="campo__label" for="Email">Email</label>
-                <input class="campo__field" type="email" placeholder="Tu Email" id="email">
+                <input class="campo__field" type="email" name="email" placeholder="Tu Email" id="email">
             </div>
 
             <div class="campo">
                 <label class="campo__label" for="contraseña">Contraseña</label>
-                <input class="campo__field" type="password" placeholder="introduce una contraseña" id="contrasena">
+                <input class="campo__field" type="password" name="password" placeholder="introduce una contraseña" id="contrasena">
             </div>
 
             <div class="campo">
-                <input type="button" value="Iniciar Sesión" class="boton boton--primario" onclick="funcionLogin()">
+                <input type="submit" value="Iniciar Sesión" class="boton boton--primario" >
             </div>
          </form>
     </main>
