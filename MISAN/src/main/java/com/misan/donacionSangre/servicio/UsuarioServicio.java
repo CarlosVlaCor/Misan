@@ -13,4 +13,5 @@ public interface UsuarioServicio {
 	public UsuarioDTO registrarUsuario(UsuarioDTO usuarioDTO);
 	
 	
+	
 }

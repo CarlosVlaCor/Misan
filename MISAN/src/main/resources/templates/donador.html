@@ -12,8 +12,8 @@
   <link rel="prefetch" href="nosotros.html" as="document">
 
   <!--Preload: sirve para precargar elementos que consideremos esenciales-->
-  <link rel="preload" href="../static/css/normalize.css" as="style">
-  <link rel="stylesheet" href="../static/css/normalize.css">
+  <link rel="preload" href="css/normalize.css" as="style">
+  <link rel="stylesheet" href="css/normalize.css">
 
   <link rel="preload" href="https://fonts.googleapis.com/css2?family=Open+Sans&family=PT+Sans:wght@400;700&display=swap"
     crossorigin="crossorigin" as="font">
@@ -30,7 +30,7 @@
 
 <body>
   <header class="header">
-
+	<input th:value="${#authentication.name}" type="hidden" id="nombre-usuario">
     <div class="contenedor">
       <div class="barra">
         <a class="logo" href="index.html">
@@ -56,14 +56,6 @@
       </div>
     </div>
   </header>
-  <div class="bg-img">
-    <div class="overlay">
-      <div class="header__texto">
-        <h2 class="no-margin h2-espacio">#Donación de sangre</h2>
-        <p class="no-margin">Donar tu sangre puede ayudar salvar vidas</p>
-      </div>
-    </div>
-  </div>
 
   <main class="contenedor">
     <h3>Donador</h3>
@@ -156,6 +148,7 @@
 
 
     </div>
+    <div><input type="button" class="boton boton--primario" value="Dejar de ser donador" onclick="dejarDeSerDonador()"><div>
   </main>
 
   <footer class="footer">
@@ -178,7 +171,7 @@
 
   <script type="text/javascript" charset="utf8"
     src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
-
+	<script src="js/funcionDonador.js"></script>
   <script src="js/funcionTabla.js">
 
   </script>

@@ -29,7 +29,7 @@
 
 <body>
     <header class="header">
-
+	<input th:value="${#authentication.name}" type="hidden" id="nombre-usuario">
         <div class="contenedor">
             <div class="barra">
                 <a class="logo" href="index.html">
@@ -154,6 +154,7 @@
 
 
         </div>
+         <div><input type="button" class="boton boton--primario" value="Dejar de ser receptor" onclick="dejarDeSerReceptor()"><div>
     </main>
 
     <footer class="footer">
@@ -176,7 +177,7 @@
 
     <script type="text/javascript" charset="utf8"
         src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
-
+	<script src="js/funcionReceptor.js"></script>
     <script src="js/funcionTabla.js">
 
     </script>

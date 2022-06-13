@@ -36,4 +36,19 @@ public class ControladorVistas {
 	public String obtenerLogin() {
 		return "login.html";
 	}
+	
+	@RequestMapping("/ser")
+	public String obtenerSer() {
+		return "ser.html";
+	}
+	
+	@RequestMapping("/donador")
+	public String obtenerDonador() {
+		return "donador.html";
+	}
+	
+	@RequestMapping("/receptor")
+	public String obtenerReceptor() {
+		return "receptor.html";
+	}
 }

@@ -19,8 +19,7 @@ public class Receptor {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
-	
-	private String ubicacion;
+
 	 private boolean activo;
 	private Date fecha;
 	@OneToOne(cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
@@ -40,14 +39,6 @@ public class Receptor {
 
 	public void setId(long id) {
 		this.id = id;
-	}
-
-	public String getUbicacion() {
-		return ubicacion;
-	}
-
-	public void setUbicacion(String ubicacion) {
-		this.ubicacion = ubicacion;
 	}
 
 	public boolean isActivo() {

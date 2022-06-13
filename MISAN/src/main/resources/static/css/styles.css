@@ -32,6 +32,29 @@ body{
     width: 90%;
     margin: 0 auto;
 }
+.contenedor-sin-imagen{
+    display: flex;
+    max-width: 120rem;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.contenedor-sin-imagen p{
+    border-bottom: 3px solid transparent;
+    border-image: linear-gradient(90deg, rgba(255,255,255,1) 12%, rgba(146,25,8,1) 31%, rgba(146,25,8,1) 73%, rgba(255,255,255,1) 90%);
+    border-image-slice: 1;
+    padding-bottom: 2em;
+    font-family: 'Oswald', sans-serif;
+    font-size: 2rem;
+    text-align: center;
+    
+}
+.contenedor-select{
+    width: 20em;
+    padding-right: 3em;
+}
+
 a{
     text-decoration: none;
 }
@@ -245,6 +268,12 @@ img{
     cursor: pointer;
     background-color: #921908;
 }
+.boton.deshabilitado{
+    background-color: white;
+    color: black;
+    border: 1px solid #921908;
+    
+}
 @media (min-width: 768px){
      .boton{
          display:inline-block;
@@ -384,19 +413,38 @@ img{
 }
 
 /*ser donador o receptor*/
-
-.ambos-botones{
-    margin-top: 10rem;
+.formato{
+    min-height: calc(100% - 7rem);
+}
+.body-sin-imagen{
+   height: 100vh;
+   
+   margin: 0em;
+}
+.contenedor-botones-ser{
     display: flex;
-    justify-content: space-between;
+    align-items: center;
+    justify-content: center;
+    
+}
+.ambos-botones{
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+    padding: 3em;
+}
+
+.boton-ser{
+    padding-right: 5em;
+    padding-left: 5em;
 }
 .tipo-sangre{
     width: 40%;
     margin-left: 30rem;
 }
 .boton-aceptar{
-    margin-top: 10rem;
-    margin-left: 53rem;
+    margin-top: 5rem;
+   
 }
 
 .receptores{

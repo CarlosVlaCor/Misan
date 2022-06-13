@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -20,12 +20,47 @@
 
     <link rel="preload" href="css/styles.css" as="style">
     <link rel="stylesheet" href="css/styles.css">
+     <script src="https://kit.fontawesome.com/498b4e748b.js" crossorigin="anonymous"></script>
  
 </head>
 <body>
     <header class="header">
+		<div class="contenedor" sec:authorize="isAuthenticated()">
+            <div class="barra">
+                <a class="logo" href="/">
+                 <img src="img/Logo.PNG" alt="" height="70px">
+                </a>
 
-        <div class="contenedor">
+                <nav class="navegacion">
+                  
+                        <a class="navegacion__enlace" href="nosotros">Nosotros</a>
+                       
+                     <ul>
+                        <li><label class="navegacion__enlace" >¿Dudas?</label>
+                            <ul>
+                  
+                                <li><a href="requisitos">Requisitos</a></li>
+                                <li><a href="mitos">Mitos</a></li>
+                                <li><a href="pf">Preguntas frecuentes</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+
+                   
+                    <ul>
+                        <li> <i class="fa-solid fa-circle-user"></i>
+                            <ul>
+                                <li><a href="#">Perfil</a></li>
+                                <li><a href="ser">Elegir apoyar</a></li>
+                                <li><a href="solicitudes">Ver solicitudes</a></li>
+                                <li><a href="logout">Cerrar sesión</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </nav>
+            </div>  
+        </div>
+        <div class="contenedor" sec:authorize="isAnonymous()">
             <div class="barra">
                 <a class="logo" href="/">
                  <img src="img/Logo.PNG" alt="" height="70px">
