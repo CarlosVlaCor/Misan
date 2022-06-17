@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Página web de blog de café">
+    <title>Misan</title>
+   
+   <!--Preload: sirve para precargar elementos que consideremos esenciales-->
+    <link rel="preload" href="css/normalize.css" as="style">
+    <link rel="stylesheet" href="css/normalize.css">
+
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Open+Sans&family=PT+Sans:wght@400;700&display=swap" 
+    crossorigin="crossorigin" as="font">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&family=PT+Sans:wght@400;700&display=swap" rel="stylesheet">
+
+    <link rel="preload" href="css/styles.css" as="style">
+    <link rel="stylesheet" href="css/styles.css">
+     <script src="https://kit.fontawesome.com/498b4e748b.js" crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@279;519;531;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="body-sin-imagen">
+	<input th:value="${#authentication.name}" type="hidden" id="nombre-usuario">
+   <div class="formato">
+    <header class="header">
+    	
+		
+        <div class="contenedor" sec:authorize="isAuthenticated()">
+            <div class="barra">
+                <a class="logo" href="/">
+                 <img src="img/Logo.PNG" alt="" height="70px">
+                </a>
+
+                <nav class="navegacion">
+                  
+                        <a class="navegacion__enlace" href="nosotros">Nosotros</a>
+                       
+                     <ul>
+                        <li><label class="navegacion__enlace" >¿Dudas?</label>
+                            <ul>
+                  
+                                <li><a href="requisitos">Requisitos</a></li>
+                                <li><a href="mitos">Mitos</a></li>
+                                <li><a href="pf">Preguntas frecuentes</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+
+                   
+                    <ul>
+                        <li> <i class="fa-solid fa-circle-user"></i>
+                            <ul>
+                                <li><a href="#">Perfil</a></li>
+                                <li>
+                                	<a th:if="${#authorization.expression('hasRole(''DONADOR'')')}" href="donador">Ver receptores</a>
+                              
+                                </li>
+                              	<li th:unless="${#authorization.expression('hasRole(''DONADOR'')')}">
+                              		<a th:if="${#authorization.expression('hasRole(''RECEPTOR'')')}" href="receptor">Ver donadores</a>
+                              		<a th:unless="${#authorization.expression('hasRole(''RECEPTOR'')')}" href="ser">Ser parte</a>
+                              	</li>
+                                <li><a href="solicitudes">Ver solicitudes</a></li>
+                                <li><a href="logout">Cerrar sesión</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </nav>
+            </div>  
+        </div>
+        <div class="contenedor" sec:authorize="isAnonymous()">
+            <div class="barra">
+                <a class="logo" href="/">
+                 <img src="img/Logo.PNG" alt="" height="70px">
+                </a>
+
+                <nav class="navegacion">
+                  
+                        <a class="navegacion__enlace" href="nosotros">Nosotros</a>
+                       
+                        <a class="navegacion__enlace" href="registro">Registro</a>
+                     <ul>
+                        <li><label class="navegacion__enlace" >¿Dudas?</label>
+                            <ul>
+                                <li><a href="requisitos">Requisitos</a></li>
+                                <li><a href="mitos">Mitos</a></li>
+                                <li><a href="pf">Preguntas frecuentes</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </nav>
+            </div>  
+        </div>
+   </header>
+
+        <section class="contenedor-botones-ser"> 
+            
+            <div class="contenedor-sin-imagen">
+                <h1>Anímate a ser parte</h1>
+                <p>En esta sección, puedes elegir entre ser un donado o ser una persona que desea recibir una donación. 
+                    <br>
+                    Una vez que presiones uno de los dos botones, puedes elegir el tipo de sangre.
+                </p>
+                <div class="ambos-botones"> 
+                        <div > 
+                        <input type="submit" value="Donador" id="boton-donador" class="boton boton--primario boton-ser">
+                        </div> 
+                        <div >
+                            <input type="submit" value="Receptor" id="boton-receptor" class="boton boton--primario boton-ser" > 
+                        </div>
+                </div>
+
+              <div class="botones-filtro">
+                
+                    <div class="contenedor">
+                        <div class="contenedor">
+                            <div class="campo contenedor-select">
+                                
+                                    <select class="campo__field " name="tipoSangre" id="tipoSangre">
+                                        <option disabled selected>Seleccione tipo de sangre</option>
+                                        <option value="1"> A+</option>
+                                        <option value="2"> A-</option>
+                                        <option value="3"> AB+</option>
+                                        <option value="4"> AB-</option>
+                                        <option value="5"> B+</option>
+                                        <option value="6"> B-+</option>  
+                                        <option value="7"> O+</option>
+                                        <option value="8"> O-</option>
+                                    </select>
+                              </div>
+                           
+
+                        </div>
+                    </div>
+              </div> 
+
+              <div class="boton-aceptar"> 
+                <input type="button" value="Continuar" class="boton boton--primario deshabilitado" id="ser-continuar" disabled="true" onclick="funContinuar()">
+                </div> 
+        </section>
+             
+    </div> 
+ 
+    <footer class="footer">
+        <div class="contenedor">
+            <div class="barra-inferior">
+                
+                    <a class="logo" href="index.html">
+                    <img src="img/Logo.PNG" alt="" height="70px">
+                    </a>
+
+                    <p>Misan 2022. Todos los derechos reservados.</p>
+                
+            </div>
+        </div>
+    </footer>
+    <script src="js/funcionesSer.js"></script>
+    <script src="js/modernizr.js"></script>
+</body>
+</html>

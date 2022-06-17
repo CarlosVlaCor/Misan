@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Página web de blog de café">
+    <title>Misan</title>
+
+    <!--Preload: sirve para precargar elementos que consideremos esenciales-->
+    <link rel="preload" href="css/normalize.css" as="style">
+    <link rel="stylesheet" href="css/normalize.css">
+
+    
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&family=PT+Sans:wght@400;700&display=swap"
+        rel="stylesheet">
+	<link rel="preload" href="js/funcionReceptor.js" as="script">
+    <link rel="preload" href="css/styles.css" as="style">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css">
+	 <script src="https://kit.fontawesome.com/498b4e748b.js" crossorigin="anonymous"></script>
+</head>
+
+<body onload="obtenerDonadores()">
+    <header class="header">
+	<input th:value="${#authentication.name}" type="hidden" id="nombre-usuario">
+        <div class="contenedor" sec:authorize="isAuthenticated()">
+            <div class="barra">
+                <a class="logo" href="/">
+                 <img src="img/Logo.PNG" alt="" height="70px">
+                </a>
+
+                <nav class="navegacion">
+                  
+                        <a class="navegacion__enlace" href="nosotros">Nosotros</a>
+                       
+                     <ul>
+                        <li><label class="navegacion__enlace" >¿Dudas?</label>
+                            <ul>
+                  
+                                <li><a href="requisitos">Requisitos</a></li>
+                                <li><a href="mitos">Mitos</a></li>
+                                <li><a href="pf">Preguntas frecuentes</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+
+                   
+                    <ul>
+                        <li> <i class="fa-solid fa-circle-user"></i>
+                            <ul>
+                                <li><a href="#">Perfil</a></li>
+                                <li>
+                                	<a th:if="${#authorization.expression('hasRole(''DONADOR'')')}" href="donador">Ver receptores</a>
+                              
+                                </li>
+                              	<li th:unless="${#authorization.expression('hasRole(''DONADOR'')')}">
+                              		<a th:if="${#authorization.expression('hasRole(''RECEPTOR'')')}" href="receptor">Ver donadores</a>
+                              		<a th:unless="${#authorization.expression('hasRole(''RECEPTOR'')')}" href="ser">Ser parte</a>
+                              	</li>
+                                <li><a href="solicitudes">Ver solicitudes</a></li>
+                                <li><a href="logout">Cerrar sesión</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </nav>
+            </div>  
+        </div>
+        <div class="contenedor" sec:authorize="isAnonymous()">
+            <div class="barra">
+                <a class="logo" href="/">
+                 <img src="img/Logo.PNG" alt="" height="70px">
+                </a>
+
+                <nav class="navegacion">
+                  
+                        <a class="navegacion__enlace" href="nosotros">Nosotros</a>
+                       
+                        <a class="navegacion__enlace" href="registro">Registro</a>
+                     <ul>
+                        <li><label class="navegacion__enlace" >¿Dudas?</label>
+                            <ul>
+                                <li><a href="requisitos">Requisitos</a></li>
+                                <li><a href="mitos">Mitos</a></li>
+                                <li><a href="pf">Preguntas frecuentes</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </nav>
+            </div>  
+        </div>
+    </header>
+    <div class="bg-img">
+        <div class="overlay">
+            <div class="header__texto">
+                <h2 class="no-margin h2-espacio">#Donación de sangre</h2>
+                <p class="no-margin">Donar tu sangre puede ayudar salvar vidas</p>
+            </div>
+        </div>
+    </div>
+
+    <main class="contenedor">
+        <h3>Receptor</h3>
+
+
+        <h4>Lista de donadores</h4>
+
+        <div class="contenedor-receptores">
+
+           <table id="myTable" class="hover row-border">
+		<thead>
+          <tr>
+            <th><strong>Nombre</strong></th>
+            <th><strong>Pais</strong></th>
+            <th><strong>Estado</strong></th>
+            <th><strong>Ciudad</strong></th>
+            <th><strong>Tipo de sangre</strong></th>
+            <th><string>Fecha de registro</string></th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody id="tbody"></tbody>
+        
+          
+       
+      </table>
+
+
+
+        </div>
+         <div><input type="button" class="boton boton--primario" value="Dejar de ser receptor" onclick="dejarDeSerReceptor()"><div>
+    </main>
+
+    <footer class="footer">
+        <div class="contenedor">
+            <div class="barra-inferior">
+
+                <a class="logo" href="index.html">
+                    <img src="img/Logo.PNG" alt="" height="70px">
+                </a>
+
+                <p>Misan 2022. Todos los derechos reservados.</p>
+
+            </div>
+        </div>
+    </footer>
+	<script src="js/funcionReceptor.js"></script>
+    <script src="js/modernizr.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.js"
+        integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+
+    <script type="text/javascript" charset="utf8"
+        src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+ 
+</body>
+
+</html>

@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Misan</title>
+    <link rel="stylesheet" href="../static/css/normalize.css">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&family=PT+Sans:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../static/css/styles.css">
+     <script src="https://kit.fontawesome.com/498b4e748b.js" crossorigin="anonymous"></script>
+
+</head>
+<body>
+    <header class="header">
+
+        <div class="contenedor" sec:authorize="isAuthenticated()">
+            <div class="barra">
+                <a class="logo" href="/">
+                 <img src="img/Logo.PNG" alt="" height="70px">
+                </a>
+
+                <nav class="navegacion">
+                  
+                        <a class="navegacion__enlace" href="nosotros">Nosotros</a>
+                       
+                     <ul>
+                        <li><label class="navegacion__enlace" >¿Dudas?</label>
+                            <ul>
+                  
+                                <li><a href="requisitos">Requisitos</a></li>
+                                <li><a href="mitos">Mitos</a></li>
+                                <li><a href="pf">Preguntas frecuentes</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+
+                   
+                    <ul>
+                        <li> <i class="fa-solid fa-circle-user"></i>
+                            <ul>
+                                <li><a href="#">Perfil</a></li>
+                                <li>
+                                	<a th:if="${#authorization.expression('hasRole(''DONADOR'')')}" href="donador">Ver receptores</a>
+                              
+                                </li>
+                              	<li th:unless="${#authorization.expression('hasRole(''DONADOR'')')}">
+                              		<a th:if="${#authorization.expression('hasRole(''RECEPTOR'')')}" href="receptor">Ver donadores</a>
+                              		<a th:unless="${#authorization.expression('hasRole(''RECEPTOR'')')}" href="ser">Ser parte</a>
+                              	</li>
+                                <li><a href="solicitudes">Ver solicitudes</a></li>
+                                <li><a href="logout">Cerrar sesión</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </nav>
+            </div>  
+        </div>
+        <div class="contenedor" sec:authorize="isAnonymous()">
+            <div class="barra">
+                <a class="logo" href="/">
+                 <img src="img/Logo.PNG" alt="" height="70px">
+                </a>
+
+                <nav class="navegacion">
+                  
+                        <a class="navegacion__enlace" href="nosotros">Nosotros</a>
+                       
+                        <a class="navegacion__enlace" href="registro">Registro</a>
+                     <ul>
+                        <li><label class="navegacion__enlace" >¿Dudas?</label>
+                            <ul>
+                                <li><a href="requisitos">Requisitos</a></li>
+                                <li><a href="mitos">Mitos</a></li>
+                                <li><a href="pf">Preguntas frecuentes</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </nav>
+            </div>  
+        </div>
+   </header>
+
+   <div class="bg-img">
+       <div class="overlay">
+            <div class="header__texto">
+                <h2 class="no-margin h2-espacio">#Donación de sangre</h2>
+                <p class="no-margin">Donar tu sangre puede ayudar salvar vidas</p>
+            </div>
+        </div>
+   </div>
+
+
+    <main class="contenedor">
+         <h3 class="centrar-texto">Sobre nosotros</h3>
+         <div class="sobre-nosotros">
+             <div class="sobre-nosotros__imagen">
+                 <img src="img/nosotros2.jpg" height="500px" alt="Imagen nosotros">
+             </div>
+             <div class="sobre-nosotros__texto">
+                 <p>
+                    Somos una organización sin fines de lucro, en apoyo a la sociedad mexicana.  
+                    Nosotros servimos como un medio para que las personas interesadas en brindar  
+                    su ayuda con donaciones de sangre a otras, puedan manifestar su necesidad de 
+                    necesitar apoyo y también a aquellos dispuestos a brindarla.
+                 </p>
+                 <p> 
+                    Somos una red de vínculos virtuales, enfocada en brindar a la sociedad mexicana
+                    la manera de facilitar la búsqueda referente a la donación y recepción de sangre.
+               
+                </p>
+             </div>
+         </div>
+    </main>
+    <footer class="footer">
+        <div class="contenedor">
+            <div class="barra-inferior">
+                
+                    <a class="logo" href="index.html">
+                    <img src="img/Logo.PNG" alt="" height="70px">
+                    </a>
+
+                    <p>Misan 2022. Todos los derechos reservados.</p>
+                
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/modernizr.js"></script>
+</body>
+</html>

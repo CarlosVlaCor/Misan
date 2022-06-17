@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Página web de blog de café">
+    <title>Misan</title>
+   
+   <!--Preload: sirve para precargar elementos que consideremos esenciales-->
+    <link rel="preload" href="css/normalize.css" as="style">
+    <link rel="stylesheet" href="css/normalize.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&family=PT+Sans:wght@400;700&display=swap" 
+    crossorigin="crossorigin" as="font">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&family=PT+Sans:wght@400;700&display=swap" rel="stylesheet">
+
+    <link rel="preload" href="css/styles.css" as="style">
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="https://kit.fontawesome.com/498b4e748b.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css">
+     <script src="https://kit.fontawesome.com/498b4e748b.js" crossorigin="anonymous"></script>
+</head>
+<body onload="cargarSolicitudes()">
+    <header class="header">
+
+        <div class="contenedor" sec:authorize="isAuthenticated()">
+            <div class="barra">
+                <a class="logo" href="/">
+                 <img src="img/Logo.PNG" alt="" height="70px">
+                </a>
+
+                <nav class="navegacion">
+                  
+                        <a class="navegacion__enlace" href="nosotros">Nosotros</a>
+                       
+                     <ul>
+                        <li><label class="navegacion__enlace" >¿Dudas?</label>
+                            <ul>
+                  
+                                <li><a href="requisitos">Requisitos</a></li>
+                                <li><a href="mitos">Mitos</a></li>
+                                <li><a href="pf">Preguntas frecuentes</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+
+                   
+                    <ul>
+                        <li> <i class="fa-solid fa-circle-user"></i>
+                            <ul>
+                                <li><a href="#">Perfil</a></li>
+                                <li>
+                                	<a th:if="${#authorization.expression('hasRole(''DONADOR'')')}" href="donador">Ver receptores</a>
+                              
+                                </li>
+                              	<li th:unless="${#authorization.expression('hasRole(''DONADOR'')')}">
+                              		<a th:if="${#authorization.expression('hasRole(''RECEPTOR'')')}" href="receptor">Ver donadores</a>
+                              		<a th:unless="${#authorization.expression('hasRole(''RECEPTOR'')')}" href="ser">Ser parte</a>
+                              	</li>
+                                <li><a href="solicitudes">Ver solicitudes</a></li>
+                                <li><a href="logout">Cerrar sesión</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </nav>
+            </div>  
+        </div>
+        <div class="contenedor" sec:authorize="isAnonymous()">
+            <div class="barra">
+                <a class="logo" href="/">
+                 <img src="img/Logo.PNG" alt="" height="70px">
+                </a>
+
+                <nav class="navegacion">
+                  
+                        <a class="navegacion__enlace" href="nosotros">Nosotros</a>
+                       
+                        <a class="navegacion__enlace" href="registro">Registro</a>
+                     <ul>
+                        <li><label class="navegacion__enlace" >¿Dudas?</label>
+                            <ul>
+                                <li><a href="requisitos">Requisitos</a></li>
+                                <li><a href="mitos">Mitos</a></li>
+                                <li><a href="pf">Preguntas frecuentes</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </nav>
+            </div>  
+        </div>
+   </header>
+   
+	<div th:if="${#authorization.expression('hasRole(''DONADOR'')')}"> 
+       <main class="contenedor">
+           <input type="hidden" id="rol" value="donador">
+           <input  th:value="${#authentication.name}" type="hidden" id="nombre-usuario"/>
+
+           <h1>Lista de solicitudes</h1> 
+           <h2>Solicitudes enviadas</h2>
+			<div>
+           <div class="contenedor-receptores">
+            
+           <table id="myTable" class="hover row-border">
+			<thead>
+         	 <tr>
+            <th><strong>Nombre</strong></th>
+            <th><strong>Pais</strong></th>
+            <th><strong>Estado</strong></th>
+            <th><strong>Ciudad</strong></th>
+            <th><strong>Tipo de sangre</strong></th>
+            <th><string>Fecha de registro</string></th>
+            <th></th>
+          </tr>
+        	</thead>
+        	<tbody id="tbody"></tbody>
+        
+         
+       
+      </table>
+      </div>
+      <h2>Solicitudes recibidas</h2>
+      <div>
+      	<div class="contenedor-receptores">
+               <table id="myTable2" class="hover row-border">
+			<thead>
+         	 <tr>
+            <th><strong>Nombre</strong></th>
+            <th><strong>Pais</strong></th>
+            <th><strong>Estado</strong></th>
+            <th><strong>Ciudad</strong></th>
+            <th><strong>Tipo de sangre</strong></th>
+            <th><string>Fecha de registro</string></th>
+            <th></th>
+          </tr>
+        	</thead>
+        	<tbody id="tbody2"></tbody>
+        
+          
+       
+    	  </table> 
+               </div>
+           </div>
+           <h2>Solicitudes aceptadas</h2>
+            <div class="contenedor-receptores">
+            
+           <table id="myTable3" class="hover row-border">
+			<thead>
+         	 <tr>
+            <th><strong>Nombre</strong></th>
+            <th><strong>Pais</strong></th>
+            <th><strong>Estado</strong></th>
+            <th><strong>Ciudad</strong></th>
+            <th><strong>Tipo de sangre</strong></th>
+            <th><string>Fecha de registro</string></th>
+            <th></th>
+          </tr>
+        	</thead>
+        	<tbody id="tbody3"></tbody>
+        
+         
+       
+      </table>
+      </div>
+       </main>
+ 	</div>
+ 	
+ 	<div th:unless="${#authorization.expression('hasRole(''DONADOR'')')}">
+ 		<div th:if="${#authorization.expression('hasRole(''RECEPTOR'')')}">
+ 			<main class="contenedor">
+           <input type="hidden" id="rol" value="receptor">
+           <input  th:value="${#authentication.name}" type="hidden" id="nombre-usuario"/>
+           
+
+           <h3>Lista de solicitudes</h3> 
+
+            <div class="contenedor-receptores">
+            
+           <table id="myTable" class="hover row-border">
+			<thead>
+         	 <tr>
+            <th><strong>Nombre</strong></th>
+            <th><strong>Pais</strong></th>
+            <th><strong>Estado</strong></th>
+            <th><strong>Ciudad</strong></th>
+            <th><strong>Tipo de sangre</strong></th>
+            <th><string>Fecha de registro</string></th>
+            <th></th>
+          </tr>
+        	</thead>
+        	<tbody id="tbody"></tbody>
+        
+         
+       
+      </table>
+      </div>
+      <h2>Solicitudes recibidas</h2>
+      <div>
+      	<div class="contenedor-receptores">
+               <table id="myTable2" class="hover row-border">
+			<thead>
+         	 <tr>
+            <th><strong>Nombre</strong></th>
+            <th><strong>Pais</strong></th>
+            <th><strong>Estado</strong></th>
+            <th><strong>Ciudad</strong></th>
+            <th><strong>Tipo de sangre</strong></th>
+            <th><string>Fecha de registro</string></th>
+            <th></th>
+          </tr>
+        	</thead>
+        	<tbody id="tbody2"></tbody>
+        
+          
+       
+    	  </table> 
+               </div>
+           </div>
+       </main>
+ 		</div>
+ 		<div th:unless="${#authorization.expression('hasRole(''RECEPTOR'')')}">
+ 		
+ 			<h1>sdasa</h1>
+ 		</div>
+ 		</div>
+ 	</div>
+ 	
+    <footer class="footer">
+        <div class="contenedor">
+            <div class="barra-inferior">
+                
+                    <a class="logo" href="index.html">
+                    <img src="img/Logo.PNG" alt="" height="70px">
+                    </a>
+
+                    <p>Misan 2022. Todos los derechos reservados.</p>
+                
+            </div>
+        </div>
+    </footer>
+    <div class="overlay--solicitudes" id="overlay--solicitudes">
+        <div class="pop-up" id="popup">
+            <div class="cerrar--popup"><i class="fa-solid fa-circle-xmark" id="cerrar--popup"></i></div>
+            <h3>Atención</h3>
+            <p>
+                Al darle a aceptar, lo que estás haciendo es aceptar el envio de datos como lo son celular y correo electrónico que proporcionaste a la hora<br/> de registrarte a Misan.
+                Esto con el fin de tener una manera de contactarse con el usuario <p id="nombre--persona">Juan Perez</p>.
+               Si tiene dudas, puede revisar el perfil del usuario para más información.
+            </p>
+            
+            <input type="submit"class="boton boton--primario" id="cancelar-envio"value="Cancelar">
+            <div id="boton-Aceptar"></div>
+        </div>
+        
+    </div>
+
+    <script src="js/modernizr.js"></script>
+    <script src="js/funciones.js"></script>
+    <script src="js/funcionesSolicitudes.js"></script>
+   <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+    crossorigin="anonymous"></script>
+
+  <script type="text/javascript" charset="utf8"
+    src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+</body >
+
+
+</html>

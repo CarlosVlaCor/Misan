@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Página web de blog de café">
+    <title>Misan</title>
+
+   <!--Preload: sirve para precargar elementos que consideremos esenciales-->
+    <link rel="preload" href="css/normalize.css" as="style">
+    <link rel="stylesheet" href="css/normalize.css">
+	
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Open+Sans&family=PT+Sans:wght@400;700&display=swap" 
+    crossorigin="crossorigin" as="font">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&family=PT+Sans:wght@400;700&display=swap" rel="stylesheet">
+
+    <link rel="preload" href="css/styles.css" as="style">
+    <link rel="stylesheet" href="css/styles.css">
+     <script src="https://kit.fontawesome.com/498b4e748b.js" crossorigin="anonymous"></script>
+ 
+</head>
+<body>
+    <header class="header">
+		<div class="contenedor" sec:authorize="isAuthenticated()">
+            <div class="barra">
+                <a class="logo" href="/">
+                 <img src="img/Logo.PNG" alt="" height="70px">
+                </a>
+
+                <nav class="navegacion">
+                  
+                        <a class="navegacion__enlace" href="nosotros">Nosotros</a>
+                       
+                     <ul>
+                        <li><label class="navegacion__enlace" >¿Dudas?</label>
+                            <ul>
+                  
+                                <li><a href="requisitos">Requisitos</a></li>
+                                <li><a href="mitos">Mitos</a></li>
+                                <li><a href="pf">Preguntas frecuentes</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+
+                   
+                    <ul>
+                        <li> <i class="fa-solid fa-circle-user"></i>
+                            <ul>
+                                <li><a href="#">Perfil</a></li>
+                                <li>
+                                	<a th:if="${#authorization.expression('hasRole(''DONADOR'')')}" href="donador">Ver receptores</a>
+                              
+                                </li>
+                              	<li th:unless="${#authorization.expression('hasRole(''DONADOR'')')}">
+                              		<a th:if="${#authorization.expression('hasRole(''RECEPTOR'')')}" href="receptor">Ver donadores</a>
+                              		<a th:unless="${#authorization.expression('hasRole(''RECEPTOR'')')}" href="ser">Ser parte</a>
+                              	</li>
+                                <li><a href="solicitudes">Ver solicitudes</a></li>
+                                <li><a href="logout">Cerrar sesión</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </nav>
+            </div>  
+        </div>
+        <div class="contenedor" sec:authorize="isAnonymous()">
+            <div class="barra">
+                <a class="logo" href="/">
+                 <img src="img/Logo.PNG" alt="" height="70px">
+                </a>
+
+                <nav class="navegacion">
+                  
+                        <a class="navegacion__enlace" href="nosotros">Nosotros</a>
+                       
+                        <a class="navegacion__enlace" href="registro">Registro</a>
+                     <ul>
+                        <li><label class="navegacion__enlace" >¿Dudas?</label>
+                            <ul>
+                                <li><a href="requisitos">Requisitos</a></li>
+                                <li><a href="mitos">Mitos</a></li>
+                                <li><a href="pf">Preguntas frecuentes</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </nav>
+            </div>  
+        </div>
+   </header>
+   <div class="bg-img">
+       <div class="overlay">
+            <div class="header__texto">
+                <h2 class="no-margin h2-espacio">#Donación de sangre</h2>
+                <p class="no-margin">Donar tu sangre puede ayudar salvar vidas</p>
+            </div>
+        </div>
+   </div>
+ 
+        
+        <section class="intro">
+            <div class="contenedor"> 
+                <div class="intro-contenido">
+                <h2>Ponlo en práctica</h2>
+                <p>
+                    En la actualidad la donación de sangre es una actividad que pocas veces hemos puesto en practica ya que por ser un acto voluntario muchas de las personas deciden  no hacerlo, por no ser beneficiados de alguna manera  o simplemente por miedo , aun teniendo en cuenta que existen pacientes en situaciones muy delicadas. Creemos que es hora de cambiar esto, conoce a más personas que estén dispuestas a donar o necesiten de algún donador.
+                </p>
+            </div>
+            </div>   
+        </section>
+
+        <section class="animate">
+            <div class="contenedor">
+                <div class="animate-contenido">
+                    <h2 class="no-margin">¡Anímate!</h2>
+                    <a href="#">Ser donador</a> <br>
+                    <a href="#">Solicitar donación</a> <br> 
+                </div> 
+            </div>
+        </section>
+
+        <section class="ambos"> 
+
+            <div class="contenedor">
+                
+               <div class="ambos-contenido"> 
+                    <div class="proceso"> 
+                        <h3>¿Cuál es el proceso de donación?</h3>
+
+                            <UL>
+                                <LI>
+                                    Acudir al banco de sangre más cercano.
+                                </LI>
+                                <li>
+                                    Se te informará sobre la donación y los aspectos legales de la misma.
+                                </li>
+                                <li>
+                                    Cumplimiento del formulario de entrevista médica y autorización para la donación. (Consentimiento informado). Este formulario deberás contestarlo honestamente ya que contiene preguntas referentes a tu actividad sexual con el fin de conocer si existe riesgo de padecer alguna enfermedad de transmisión sexual, en cuyo caso no se podrá donar. Cabe señalar que la información que proporciones es 100% confidencial.
+                                </li>
+                                <li>
+                                    Te realizarán una exploración física (donde se medirá la tensión arterial, el pulso y se hará una punción en el dedo para saber si hay anemia, azúcar o grasa alta en sangre) y una entrevista para descartar algún problema por el que la donación pueda ser perjudicial para ti o los receptores. En caso de detectar algún problema no se llevará a cabo la donación y se te informará el motivo.
+                                </li>
+                                <li>
+                                    Extracción de la sangre: se conecta al donante a una máquina con equipo de bolsas y tubos nuevos por medio de una punción en la vena del brazo. La sangre llega al equipo donde se separan las plaquetas o glóbulos y el resto de la sangre se regresa al donante. La donación de plaquetas dura 120 minutos y la de glóbulos rojos 30 minutos.
+                                </li>
+                                <li>
+                                    Periodo de recuperación y refrigerio.
+                                </li>
+                            </UL>
+                        </div>
+                     <p>Para más información visite el sitio <a target="_blank" href="https://www.gob.mx/issste/es/articulos/requisitos-y-proceso-para-la-donacion-de-sangre?idiom=es">gob.mx</a> </p>
+                </div> 
+            </div>
+        </section>
+             
+        </div>
+ 
+    <footer class="footer">
+        <div class="contenedor">
+            <div class="barra-inferior">
+                
+                    <a class="logo" href="index.html">
+                    <img src="img/Logo.PNG" alt="" height="70px">
+                    </a>
+
+                    <p>Misan 2022. Todos los derechos reservados.</p>
+                
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/modernizr.js"></script>
+</body>
+</html>
