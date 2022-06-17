@@ -21,10 +21,6 @@ public class Estado {
 	private String nombreEstado;
 	
 	
-	@OneToMany(mappedBy = "estado", cascade = CascadeType.ALL)
-	private List<Domicilio> domicilios;
-
-
 	public long getId() {
 		return id;
 	}
@@ -42,16 +38,6 @@ public class Estado {
 
 	public void setNombreEstado(String nombreEstado) {
 		this.nombreEstado = nombreEstado;
-	}
-
-
-	public List<Domicilio> getDomicilios() {
-		return domicilios;
-	}
-
-
-	public void setDomicilios(List<Domicilio> domicilios) {
-		this.domicilios = domicilios;
 	}
 
 

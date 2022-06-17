@@ -85,6 +85,11 @@ public class Donador {
 	public Donador() {
 		super();
 	}
+
+	@Override
+	public String toString() {
+		return "Donador [id=" + id + ", activo=" + activo + ", fecha=" + fecha + ", usuario=" + usuario + "]";
+	}
 	
 	
 }

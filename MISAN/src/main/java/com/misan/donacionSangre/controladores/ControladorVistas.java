@@ -51,4 +51,8 @@ public class ControladorVistas {
 	public String obtenerReceptor() {
 		return "receptor.html";
 	}
+	@RequestMapping("/solicitudes")
+	public String obtenerSolicitudes() {
+		return "solicitudes.html";
+	}
 }

@@ -8,35 +8,86 @@
     <link rel="stylesheet" href="css/normalize.css">
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans&family=PT+Sans:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/styles.css">
-
+	 <script src="https://kit.fontawesome.com/498b4e748b.js" crossorigin="anonymous"></script>
 </head>
 <body>
     <header class="header">
 
-        <div class="contenedor">
+       <div class="contenedor" sec:authorize="isAuthenticated()">
             <div class="barra">
-                <a class="logo" href="index.html">
+                <a class="logo" href="/">
                  <img src="img/Logo.PNG" alt="" height="70px">
                 </a>
 
                 <nav class="navegacion">
-                    <a class="navegacion__enlace" href="nosotros.html">Nosotros</a>
-                     
-                    <a class="navegacion__enlace" href="registro.html">Registro</a>
-                    <ul>
-                        <li><label class="navegacion__enlace">¿Dudas?</label>
+                  
+                        <a class="navegacion__enlace" href="nosotros">Nosotros</a>
+                       
+                     <ul>
+                        <li><label class="navegacion__enlace" >¿Dudas?</label>
                             <ul>
-                                <li><a href="requisitos.html">Requisitos</a></li>
-                                <li><a href="mitos.html">Mitos</a></li>
-                                <li><a href="pf.html">Preguntas frecuentes</a></li>
+                  
+                                <li><a href="requisitos">Requisitos</a></li>
+                                <li><a href="mitos">Mitos</a></li>
+                                <li><a href="pf">Preguntas frecuentes</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+
+                   
+                    <ul>
+                        <li> <i class="fa-solid fa-circle-user"></i>
+                            <ul>
+                                <li><a href="#">Perfil</a></li>
+                                <li>
+                                	<a th:if="${#authorization.expression('hasRole(''DONADOR'')')}" href="donador">Ver receptores</a>
+                              
+                                </li>
+                              	<li th:unless="${#authorization.expression('hasRole(''DONADOR'')')}">
+                              		<a th:if="${#authorization.expression('hasRole(''RECEPTOR'')')}" href="receptor">Ver donadores</a>
+                              		<a th:unless="${#authorization.expression('hasRole(''RECEPTOR'')')}" href="ser">Ser parte</a>
+                              	</li>
+                                <li><a href="solicitudes">Ver solicitudes</a></li>
+                                <li><a href="logout">Cerrar sesión</a></li>
                             </ul>
                         </li>
                     </ul>
                 </nav>
-            </div>
+            </div>  
+        </div>
+       
+        <div class="contenedor" sec:authorize="isAnonymous()">
+            <div class="barra">
+                <a class="logo" href="/">
+                 <img src="img/Logo.PNG" alt="" height="70px">
+                </a>
+
+                <nav class="navegacion">
+                  
+                        <a class="navegacion__enlace" href="nosotros">Nosotros</a>
+                       
+                        <a class="navegacion__enlace" href="registro">Registro</a>
+                     <ul>
+                        <li><label class="navegacion__enlace" >¿Dudas?</label>
+                            <ul>
+                                <li><a href="requisitos">Requisitos</a></li>
+                                <li><a href="mitos">Mitos</a></li>
+                                <li><a href="pf">Preguntas frecuentes</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </nav>
+            </div>  
         </div>
    </header>
-   
+ <div class="bg-img">
+       <div class="overlay">
+            <div class="header__texto">
+                <h2 class="no-margin h2-espacio">#Donación de sangre</h2>
+                <p class="no-margin">Donar tu sangre puede ayudar salvar vidas</p>
+            </div>
+        </div>
+   </div>
 
     <main class="contenedor">
          <h3 class="centrar-texto">Login</h3>

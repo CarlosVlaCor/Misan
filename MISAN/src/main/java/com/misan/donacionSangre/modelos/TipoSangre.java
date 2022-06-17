@@ -9,6 +9,8 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 @Entity
 @Table(name = "tipos_sangre")
 public class TipoSangre {
@@ -16,12 +18,7 @@ public class TipoSangre {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
 	private String tipoSangre;
-	@OneToMany(mappedBy = "tipoSangre")
-	private List<Usuario> usuarios;
-	@OneToMany(mappedBy = "tipoSangre")
-	private List<Receptor> receptores;
-	@OneToMany(mappedBy = "tipoSangre")
-	private List<Donador> donadores;
+	
 	public TipoSangre() {
 		super();
 	}

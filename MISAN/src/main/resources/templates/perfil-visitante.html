@@ -8,9 +8,6 @@
     <meta name="description" content="Página web de blog de café">
     <title>Misan</title>
 
-    <!--prefetch: sirve para precargar páginas-->
-    <link rel="prefetch" href="nosotros.html" as="document">
-
     <!--Preload: sirve para precargar elementos que consideremos esenciales-->
     <link rel="preload" href="../static/css/normalize.css" as="style">
     <link rel="stylesheet" href="../static/css/normalize.css">
@@ -31,29 +28,70 @@
 <body>
     <header class="header">
 
-        <div class="contenedor">
+       <div class="contenedor" sec:authorize="isAuthenticated()">
             <div class="barra">
-                <a class="logo" href="index.html">
-                    <img src="img/Logo.PNG" alt="" height="70px">
+                <a class="logo" href="/">
+                 <img src="img/Logo.PNG" alt="" height="70px">
                 </a>
 
                 <nav class="navegacion">
-
-                    <a class="navegacion__enlace" href="nosotros.html">Nosotros</a>
-
-                    <a class="navegacion__enlace" href="registro.html">Registro</a>
-                    <ul>
-                        <li><label class="navegacion__enlace">¿Dudas?</label>
+                  
+                        <a class="navegacion__enlace" href="nosotros">Nosotros</a>
+                       
+                     <ul>
+                        <li><label class="navegacion__enlace" >¿Dudas?</label>
                             <ul>
-                                <li><a href="requisitos.html">Requisitos</a></li>
-                                <li><a href="mitos.html">Mitos</a></li>
-                                <li><a href="pf.html">Preguntas frecuentes</a></li>
+                  
+                                <li><a href="requisitos">Requisitos</a></li>
+                                <li><a href="mitos">Mitos</a></li>
+                                <li><a href="pf">Preguntas frecuentes</a></li>
                             </ul>
                         </li>
                     </ul>
 
+                   
+                    <ul>
+                        <li> <i class="fa-solid fa-circle-user"></i>
+                            <ul>
+                                <li><a href="#">Perfil</a></li>
+                                <li>
+                                	<a th:if="${#authorization.expression('hasRole(''DONADOR'')')}" href="donador">Ver receptores</a>
+                              
+                                </li>
+                              	<li th:unless="${#authorization.expression('hasRole(''DONADOR'')')}">
+                              		<a th:if="${#authorization.expression('hasRole(''RECEPTOR'')')}" href="receptor">Ver donadores</a>
+                              		<a th:unless="${#authorization.expression('hasRole(''RECEPTOR'')')}" href="ser">Ser parte</a>
+                              	</li>
+                                <li><a href="solicitudes">Ver solicitudes</a></li>
+                                <li><a href="logout">Cerrar sesión</a></li>
+                            </ul>
+                        </li>
+                    </ul>
                 </nav>
-            </div>
+            </div>  
+        </div>
+        <div class="contenedor" sec:authorize="isAnonymous()">
+            <div class="barra">
+                <a class="logo" href="/">
+                 <img src="img/Logo.PNG" alt="" height="70px">
+                </a>
+
+                <nav class="navegacion">
+                  
+                        <a class="navegacion__enlace" href="nosotros">Nosotros</a>
+                       
+                        <a class="navegacion__enlace" href="registro">Registro</a>
+                     <ul>
+                        <li><label class="navegacion__enlace" >¿Dudas?</label>
+                            <ul>
+                                <li><a href="requisitos">Requisitos</a></li>
+                                <li><a href="mitos">Mitos</a></li>
+                                <li><a href="pf">Preguntas frecuentes</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </nav>
+            </div>  
         </div>
     </header>
     <div class="bg-img">

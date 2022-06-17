@@ -1,6 +1,8 @@
 package com.misan.donacionSangre.servicio;
 
+import java.util.ArrayList;
 import java.util.Collections;
+import java.util.List;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,8 +11,10 @@ import org.springframework.stereotype.Service;
 
 import com.misan.donacionSangre.dto.UsuarioDTO;
 import com.misan.donacionSangre.modelos.Domicilio;
+import com.misan.donacionSangre.modelos.Donador;
 import com.misan.donacionSangre.modelos.Estado;
 import com.misan.donacionSangre.modelos.Pais;
+import com.misan.donacionSangre.modelos.Receptor;
 import com.misan.donacionSangre.modelos.Rol;
 import com.misan.donacionSangre.modelos.TipoSangre;
 import com.misan.donacionSangre.modelos.Usuario;
@@ -19,6 +23,7 @@ import com.misan.donacionSangre.repositorio.EstadoRepositorio;
 import com.misan.donacionSangre.repositorio.PaisRepositorio;
 import com.misan.donacionSangre.repositorio.ReceptorRepositorio;
 import com.misan.donacionSangre.repositorio.RolRepositorio;
+import com.misan.donacionSangre.repositorio.SolicitudDonadorReceptorRepositorio;
 import com.misan.donacionSangre.repositorio.TipoSangreRepositorio;
 import com.misan.donacionSangre.repositorio.UsuarioRepositorio;
 
@@ -52,7 +57,8 @@ public class UsuarioServicioImpl implements UsuarioServicio{
 	
 	@Autowired
 	private RolRepositorio rolRepositorio;
-	
+	@Autowired
+	private SolicitudDonadorReceptorRepositorio solicitud;
 	@Override
 	public UsuarioDTO registrarUsuario(UsuarioDTO usuarioDTO) {
 		Usuario usuario = mapearEntidad(usuarioDTO);
@@ -93,6 +99,20 @@ public class UsuarioServicioImpl implements UsuarioServicio{
 		return mapearDTO(usuario);
 	}
 	
+	public void obtenerAceptados(String email) {
+		Usuario usuario = usuarioRepositorio.findByEmail(email);
+		Receptor receptor = receptorRepositorio.findByUsuario(usuario);
+		List<Donador> donadores =dondadorRepositorio.findAllAceptados(receptor);
+		List<Usuario> usuarios = usuarioRepositorio.findByDonadores(donadores);
+		
+		Donador donador = dondadorRepositorio.findByUsuario(usuario);
+		List<Receptor> receptores =receptorRepositorio.findAllAceptados(donador);
+		List<Usuario> usuarios2 = usuarioRepositorio.findByReceptores(receptores);
+		
+		for(Usuario uss: usuarios2) {
+			System.out.println(uss);
+		}
+	}
 	private UsuarioDTO mapearDTO(Usuario usuario) {
 		return modelMapper.map(usuario, UsuarioDTO.class);
 	}

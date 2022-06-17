@@ -13,6 +13,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
 @Entity
 @Table(name = "receptores")
 public class Receptor {
@@ -20,7 +22,7 @@ public class Receptor {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
 
-	 private boolean activo;
+	private boolean activo;
 	private Date fecha;
 	@OneToOne(cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
 	@JoinColumn(name = "id_usuario")
@@ -28,7 +30,9 @@ public class Receptor {
 	
 	@ManyToOne
 	@JoinColumn(name = "id_tipo_sangre")
+	@JsonBackReference
 	private TipoSangre tipoSangre;
+	
 	
 	@OneToMany(mappedBy = "receptor")
 	private List<SolicitudDonadorReceptor> solicitudes;
@@ -84,6 +88,12 @@ public class Receptor {
 	public Receptor() {
 		super();
 	}
+
+	@Override
+	public String toString() {
+		return "Receptor [id=" + id + ", activo=" + activo + ", fecha=" + fecha + "]";
+	}
+	
 	
 	
 }

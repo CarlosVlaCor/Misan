@@ -6,14 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Página web de blog de café">
     <title>Misan</title>
-   
-    <!--prefetch: sirve para precargar páginas-->
-    <link rel="prefetch" href="nosotros.html" as="document">
 
    <!--Preload: sirve para precargar elementos que consideremos esenciales-->
     <link rel="preload" href="css/normalize.css" as="style">
     <link rel="stylesheet" href="css/normalize.css">
-
+	
     <link rel="preload" href="https://fonts.googleapis.com/css2?family=Open+Sans&family=PT+Sans:wght@400;700&display=swap" 
     crossorigin="crossorigin" as="font">
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans&family=PT+Sans:wght@400;700&display=swap" rel="stylesheet">
@@ -51,7 +48,14 @@
                         <li> <i class="fa-solid fa-circle-user"></i>
                             <ul>
                                 <li><a href="#">Perfil</a></li>
-                                <li><a href="ser">Elegir apoyar</a></li>
+                                <li>
+                                	<a th:if="${#authorization.expression('hasRole(''DONADOR'')')}" href="donador">Ver receptores</a>
+                              
+                                </li>
+                              	<li th:unless="${#authorization.expression('hasRole(''DONADOR'')')}">
+                              		<a th:if="${#authorization.expression('hasRole(''RECEPTOR'')')}" href="receptor">Ver donadores</a>
+                              		<a th:unless="${#authorization.expression('hasRole(''RECEPTOR'')')}" href="ser">Ser parte</a>
+                              	</li>
                                 <li><a href="solicitudes">Ver solicitudes</a></li>
                                 <li><a href="logout">Cerrar sesión</a></li>
                             </ul>

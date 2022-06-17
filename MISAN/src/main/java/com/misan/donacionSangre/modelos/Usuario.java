@@ -17,6 +17,8 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 @Entity
 @Table(name= "usuarios", uniqueConstraints = {@UniqueConstraint(columnNames = {"email"})})
 public class Usuario {
@@ -39,6 +41,11 @@ public class Usuario {
 	@ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	@JoinTable(name = "usuario_Roles", joinColumns = @JoinColumn(name = "usuario_id", referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(name = "rol_id", referencedColumnName = "id"))
 	private Set<Rol> roles;
+	@OneToOne(mappedBy = "usuario")
+	private Donador donador;
+	@OneToOne(mappedBy = "usuario")
+	private Receptor receptor;
+	
 	public long getId() {
 		return id;
 	}
@@ -99,8 +106,28 @@ public class Usuario {
 	public void setRoles(Set<Rol> roles) {
 		this.roles = roles;
 	}
+	
 	public Usuario() {
 		super();
+	}
+	
+	public Donador getDonador() {
+		return donador;
+	}
+	public void setDonador(Donador donador) {
+		this.donador = donador;
+	}
+	public Receptor getReceptor() {
+		return receptor;
+	}
+	public void setReceptor(Receptor receptor) {
+		this.receptor = receptor;
+	}
+	@Override
+	public String toString() {
+		return "Usuario [id=" + id + ", nombre=" + nombre + ", apellidoPaterno=" + apellidoPaterno
+				+ ", apellidoMaterno=" + apellidoMaterno + ", fechaNacimiento=" + fechaNacimiento + ", email=" + email
+				+ ", password=" + password + "]";
 	}
 	
 	
